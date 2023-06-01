@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Category: Codable, Hashable{
+struct Category: Codable {
     let id: Int
     let name: String
-    let imgae: String
+    let image: String
 }
