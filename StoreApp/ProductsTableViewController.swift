@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ProductsTableViewController: UITableViewController {
     
@@ -52,11 +53,13 @@ class ProductsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath)
         let product = products[indexPath.row]
         
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = product.title
-        configuration.secondaryText = product.description
+//        var configuration = cell.defaultContentConfiguration()
+//        configuration.text = product.title
+//        configuration.secondaryText = product.description
         
-        cell.contentConfiguration = configuration
+        cell.contentConfiguration = UIHostingConfiguration(content: {
+            ProductCellView(product: product)
+        })
         
         return cell
     }

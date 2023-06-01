@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension Locale {
+    static var currentCode: String {
+        Locale.current.currency?.identifier ?? "USD"
+    }
+}
