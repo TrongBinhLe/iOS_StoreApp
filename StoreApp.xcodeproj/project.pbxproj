@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842ED6352A3069CA0016232C /* CategoryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842ED6342A3069CA0016232C /* CategoryPickerView.swift */; };
 		84ED08BA2A2832CA0041E8C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08B92A2832CA0041E8C8 /* AppDelegate.swift */; };
 		84ED08BC2A2832CA0041E8C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08BB2A2832CA0041E8C8 /* SceneDelegate.swift */; };
 		84ED08BE2A2832CA0041E8C8 /* CategoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08BD2A2832CA0041E8C8 /* CategoriesTableViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		842ED6342A3069CA0016232C /* CategoryPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerView.swift; sourceTree = "<group>"; };
 		84ED08B62A2832CA0041E8C8 /* StoreApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84ED08B92A2832CA0041E8C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84ED08BB2A2832CA0041E8C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				84ED08DD2A2896690041E8C8 /* ProductCellView.swift */,
+				842ED6342A3069CA0016232C /* CategoryPickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				84ED08DB2A2881B20041E8C8 /* ProductsTableViewController.swift in Sources */,
 				84ED08E02A28999B0041E8C8 /* Locale+Extension.swift in Sources */,
 				84ED08BC2A2832CA0041E8C8 /* SceneDelegate.swift in Sources */,
+				842ED6352A3069CA0016232C /* CategoryPickerView.swift in Sources */,
 				84ED08D92A28747A0041E8C8 /* Product.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
