@@ -19,6 +19,7 @@
 		84ED08DB2A2881B20041E8C8 /* ProductsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08DA2A2881B20041E8C8 /* ProductsTableViewController.swift */; };
 		84ED08DE2A2896690041E8C8 /* ProductCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08DD2A2896690041E8C8 /* ProductCellView.swift */; };
 		84ED08E02A28999B0041E8C8 /* Locale+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08DF2A28999B0041E8C8 /* Locale+Extension.swift */; };
+		84ED08E22A29BFD80041E8C8 /* AddProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED08E12A29BFD80041E8C8 /* AddProductViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		84ED08DA2A2881B20041E8C8 /* ProductsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTableViewController.swift; sourceTree = "<group>"; };
 		84ED08DD2A2896690041E8C8 /* ProductCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCellView.swift; sourceTree = "<group>"; };
 		84ED08DF2A28999B0041E8C8 /* Locale+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extension.swift"; sourceTree = "<group>"; };
+		84ED08E12A29BFD80041E8C8 /* AddProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				84ED08BD2A2832CA0041E8C8 /* CategoriesTableViewController.swift */,
 				84ED08DA2A2881B20041E8C8 /* ProductsTableViewController.swift */,
+				84ED08E12A29BFD80041E8C8 /* AddProductViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84ED08E22A29BFD80041E8C8 /* AddProductViewController.swift in Sources */,
 				84ED08D02A2837570041E8C8 /* StoreHTTPClient.swift in Sources */,
 				84ED08DE2A2896690041E8C8 /* ProductCellView.swift in Sources */,
 				84ED08D62A284B950041E8C8 /* URL+Extensions.swift in Sources */,
