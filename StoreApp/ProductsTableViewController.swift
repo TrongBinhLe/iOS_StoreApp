@@ -68,6 +68,7 @@ class ProductsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath)
+        cell.accessoryType = .disclosureIndicator
         let product = products[indexPath.row]
         
 //        var configuration = cell.defaultContentConfiguration()
@@ -79,6 +80,13 @@ class ProductsTableViewController: UITableViewController {
         })
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let product = products[indexPath.row]
+        let productDetailVC = ProductDetailViewController(product: product)
+        navigationController?.pushViewController(productDetailVC, animated: true)
     }
     
 }
