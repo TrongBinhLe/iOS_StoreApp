@@ -25,11 +25,18 @@ struct AddProductionFormState {
     }
 }
 
+protocol AddProductViewControllerDelegate: AnyObject {
+    func addProductViewControllerDidCancel(vc: AddProductViewController)
+    func addProductViewControllerDidSave(vc: AddProductViewController, product: Product)
+}
+
 class AddProductViewController: UIViewController {
     
     let stackView = UIStackView()
     private var selectedCategory: Category?
     private var addProductionFormState = AddProductionFormState()
+    
+    weak var delegate: AddProductViewControllerDelegate?
     
     lazy var saveBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveBarButtonPressed))
@@ -159,11 +166,22 @@ struct AddProductViewController_Previews: PreviewProvider {
 extension AddProductViewController {
     
     @objc private func cancelButtonItemPressed(_ sender: UIBarButtonItem) {
-        
+        delegate?.addProductViewControllerDidCancel(vc: self)
     }
     
     @objc private func saveBarButtonPressed(_ sender: UIBarButtonItem) {
+        guard let title = titleTextField.text,
+              let price = Double(priceTextField.text ?? "0.0"),
+              let description = descriptionTextView.text,
+              let imageUrl = imageURLTextField.text,
+              let productImageUrl = URL(string: imageUrl),
+              let category = selectedCategory
+        else { return }
         
+        let product = Product(id: nil, title: title, price: price, description: description, category: category, images: [productImageUrl])
+        
+        delegate?.addProductViewControllerDidSave(vc: self, product: product)
+    
     }
     
     @objc private func textFieldDidChange(_ sender: UITextField) {

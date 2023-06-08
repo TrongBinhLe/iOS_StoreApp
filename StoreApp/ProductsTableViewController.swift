@@ -88,7 +88,30 @@ class ProductsTableViewController: UITableViewController {
 extension ProductsTableViewController {
     @objc func addProductBarButtonitemPressed(_ sender: UIBarButtonItem) {
         let addProductVC = AddProductViewController()
+        addProductVC.delegate = self
         let navigationController = UINavigationController(rootViewController: addProductVC)
         present(navigationController, animated: true)
     }
+}
+
+extension ProductsTableViewController: AddProductViewControllerDelegate {
+    func addProductViewControllerDidCancel(vc: AddProductViewController) {
+        vc.dismiss(animated: true)
+    }
+    
+    func addProductViewControllerDidSave(vc: AddProductViewController, product: Product) {
+        let createProductRequest = CreateProductRequest(product: product)
+        
+        Task {
+            do{
+                let newProduct = try await client.createProduct(productRequest: createProductRequest)
+                products.insert(newProduct, at: 0)
+                tableView.reloadData()
+                vc.dismiss(animated: true)
+            } catch {
+               print(error)
+            }
+        }
+    }
+    
 }
