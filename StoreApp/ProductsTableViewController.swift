@@ -34,15 +34,19 @@ class ProductsTableViewController: UITableViewController {
         
         title = category.name
         navigationController?.navigationBar.prefersLargeTitles = true
-        Task {
-            await populateProducts()
-        }
-        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ProductTableViewCell")
         navigationItem.rightBarButtonItem = addProductBarButtonItem
         
         style()
         layout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Task {
+            await populateProducts()
+            tableView.reloadData()
+        }
     }
     
     private func style() {
