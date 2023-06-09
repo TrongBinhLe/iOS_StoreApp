@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 class ProductDetailViewController: UIViewController {
     
@@ -36,6 +37,13 @@ class ProductDetailViewController: UIViewController {
         
         return button
         
+    }()
+    
+    lazy var loadingIndicatorView: UIActivityIndicatorView = {
+       let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.style = .large
+        
+        return activityIndicatorView
     }()
     
     init(product: Product){
@@ -69,10 +77,25 @@ class ProductDetailViewController: UIViewController {
         descriptionLabel.text = product.description
         priceLabel.text = product.price.formatAsCurrency()
         
+        var images: [UIImage] = []
+        Task {
+            loadingIndicatorView.startAnimating()
+            for imageURL in (product.images ?? []) {
+                guard let downloadImage = try? await ImageLoader.load(url: imageURL) else { return }
+                images.append(downloadImage)
+            }
+            /// Adding the product image list view to the product view controller.
+            let productImageListVC = UIHostingController(rootView: ProductImageListView(images: images))
+            guard let productImageListView = productImageListVC.view else { return }
+            stackView.insertArrangedSubview(productImageListView, at: 0)
+            self.addChild(productImageListVC)
+            productImageListVC.didMove(toParent: self)
+            loadingIndicatorView.stopAnimating()
+        }
     }
     
     private func layout() {
-        
+        stackView.addArrangedSubview(loadingIndicatorView)
         stackView.addArrangedSubview(descriptionLabel)
         stackView.addArrangedSubview(priceLabel)
         stackView.addArrangedSubview(deleteButtonProduct)
@@ -81,6 +104,8 @@ class ProductDetailViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             stackView.widthAnchor.constraint(equalTo: view.widthAnchor)])
+        
+
     }
     
 }
