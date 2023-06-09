@@ -73,8 +73,11 @@ class StoreHTTPClient {
             throw NetworkError.invalidServerResponse
         }
         
-        let deleteProductResponse =   try JSONDecoder().decode(DeleteProductResponse.self, from: data)
+//        let deleteProductResponse =   try JSONDecoder().decode(DeleteProductResponse.self, from: data)
+//
+//        return deleteProductResponse.rta ?? false
         
-        return deleteProductResponse.rta ?? false
+        let isDeleted = try JSONDecoder().decode(Bool.self, from: data)
+        return isDeleted
     }
 }
