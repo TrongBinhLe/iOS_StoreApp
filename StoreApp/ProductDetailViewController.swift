@@ -127,7 +127,7 @@ extension ProductDetailViewController {
                     let _ = navigationController?.popViewController(animated: true)
                 }
             } catch {
-                print("Show Error")
+                showMessage(title: "Error", message: "Unable to delete the product. Please check the productId", messageType: .error)
             }
         }
     }
