@@ -59,7 +59,8 @@ class ProductsTableViewController: UITableViewController {
     
     private func populateProducts() async {
         do {
-            products = try await client.getProductByCategory(categoryId: category.id)
+//            products = try await client.getProductByCategory(categoryId: category.id)
+            products = try await client.load(Resource(url: URL.productsByCategory(category.id)))
             tableView.reloadData()
         } catch {
             //To do: Show alert popup
@@ -116,7 +117,9 @@ extension ProductsTableViewController: AddProductViewControllerDelegate {
         
         Task {
             do{
-                let newProduct = try await client.createProduct(productRequest: createProductRequest)
+//                let newProduct = try await client.createProduct(productRequest: createProductRequest)
+                let data = try JSONEncoder().encode(createProductRequest)
+                let newProduct: Product = try await client.load(Resource(url: URL.createProduct, method: .post(data)))
                 products.insert(newProduct, at: 0)
                 tableView.reloadData()
                 vc.dismiss(animated: true)

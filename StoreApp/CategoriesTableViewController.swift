@@ -27,7 +27,9 @@ class CategoriesTableViewController: UITableViewController {
 
     private func populateCategories() async {
         do {
-            categories = try await client.getAllCategories()
+            // categories = try await client.getAllCategories()
+            // Another way is generic the URL resource.
+            categories = try await client.load(Resource(url: URL.allCategories))
         } catch {
             // Todo: Show up the alert to show error.
         }
